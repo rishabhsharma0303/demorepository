@@ -1,0 +1,10 @@
+package com.traineeMgt.controller;
+
+public class Trainee {
+	private int trainee_id;
+	private String trainee_name;
+	private String branch;
+	private double percentage;
+	
+
+}

@@ -1,0 +1,6 @@
+
+public interface TraineeDao {
+	public List<Trainee> getAllTrainee();
+	public Trainee addTrainee(Trainee Trainee);
+	
+}

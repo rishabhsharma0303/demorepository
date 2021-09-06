@@ -1,0 +1,62 @@
+package com.traineeMgt.model.dao;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.traineeMgt.model.dao.factories.JdbcConnectionFactory;
+import com.traineeMgt.model.exceptions.DataAccessException;
+
+public class TraineeDaoImp1 implements TraineeDao {
+private Connection connection;
+	
+	public TraineeDaoImp1() {
+		connection=JdbcConnectionFactory.getConnection();
+	}
+	@Override
+	public List<Trainee> getAllTrainee() {
+		List<Trainee> books = new ArrayList<>();
+		Trainee tempBook;
+		try {
+			String all_trainees_query = "select * from trainee";
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(all_trainees_query);
+			while (rs.next()) {
+				tempTrainee = new Trainee(rs.getInt("trainee_id"), 
+						rs.getString("trainee_name"), 
+						rs.getString("branch"),
+						rs.getDouble("percentage"));
+
+				books.add(tempBook);
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			throw new DataAccessException(ex.getMessage());
+		}
+		return books;
+	}
+
+	@Override
+	public void addTrainee(Trainee Trainee) {
+		String add_customer = "insert into trainee(username,password, profile) values (?,?,?)";
+		PreparedStatement pstmt;
+		try {
+			pstmt = connection.prepareStatement(add_customer);
+			pstmt.setString(1, Trainee.getTrainee_name());
+			pstmt.setString(2, Trainee.getBranch());
+			pstmt.setDouble(3, Trainee.getPercentage());
+		
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DataAccessException(e.getMessage());
+		}
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.demo;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+
+public class MyDogListner implements ServletContextListener {
+	public void contextInitialized(ServletContextEvent event)  { 
+     String dogName=event.getServletContext().getInitParameter("dogName");
+     Dog dog =new Dog();
+     dog.setDogName("DogName");
+     event.getServletContext().setAttribute("dog", dog);
+		
+   }
+    public void contextDestroyed(ServletContextEvent event)  { 
+         // TODO Auto-generated method stub
+    	 event.getServletContext().removeAttribute("dog");
+    }
+
+    
+	
+}

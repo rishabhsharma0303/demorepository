@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>add new trainees </title>
+</head>
+<body>
+<form action="BookController.do" method="post">
+	<input type="hidden" name="id"  value="0"/>
+	<table>
+		<tr>
+			<td>trainee_id</td>
+			<td><input type="text" name="trainee_id" id="trainee_id"/></td>
+		</tr>
+		<tr>
+			<td>trainee_name</td>
+			<td><input type="text" name="trainee_name" id="trainee_name"/></td>
+		</tr>
+		<tr>
+			<td>branch</td>
+			<td><input type="text" name="branch" id="branch"/></td>
+		</tr>
+		<tr>
+			<td>pub date</td>
+			<td><input type="text" name="percentage" id="percentage"/></td>
+		</tr>
+		<tr>
+			<td>price</td>
+			<td><input type="text" name="price" id="priceId"/></td>
+		</tr>
+		<tr>
+			
+			<td> <input type="submit"/> </td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

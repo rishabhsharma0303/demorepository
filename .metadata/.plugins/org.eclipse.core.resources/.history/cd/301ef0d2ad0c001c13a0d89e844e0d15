@@ -1,0 +1,8 @@
+package com.traineeMgt.web.controller;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/TraineeController.do")
+public class TraineeController {
+
+}

@@ -1,0 +1,27 @@
+package com.demo;
+
+import javax.servlet.ServletContextAttributeEvent;
+import javax.servlet.ServletContextAttributeListener;
+
+/**
+ * Application Lifecycle Listener implementation class MyScAttributeListner
+ *
+ */
+public class MyScAttributeListner implements ServletContextAttributeListener {
+
+   
+    public void attributeAdded(ServletContextAttributeEvent scae)  { 
+        
+    }
+
+	
+    public void attributeRemoved(ServletContextAttributeEvent scae)  { 
+       
+    }
+
+	
+    public void attributeReplaced(ServletContextAttributeEvent scae)  { 
+        
+    }
+	
+}

@@ -1,0 +1,13 @@
+package com.traineeMgt.model.service;
+
+import com.traineeMgt.model.dao.TraineeDao;
+import com.traineeMgt.model.dao.TraineeDaoImp1;
+
+public class TraineeServiceImp1 {
+private TraineeDao traineeDao;
+	
+	public TraineeServiceImp1() {
+		traineeDao=new TraineeDaoImp1();
+		
+	}
+}

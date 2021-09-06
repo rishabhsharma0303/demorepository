@@ -1,0 +1,75 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>TraineeMgtapp</title>\
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<a href="LogoutController">logout</a>
+welcome ${user.username}! <br/>
+
+Logged in users ${LoggedInUserListner.counter} you are not alone!<br/>
+
+<table>
+	<thead>
+		<tr>
+			<th>trainee_id</th>
+			<th>trainee_name</th>
+			<th>branch</th>
+			<th>percentage</th>
+			
+			<c:if test="${user.profile=='admin' ||user.profile=='mgr' }">
+			<th>update</th>
+			</c:if>
+			<c:if test="${user.profile=='admin'}">
+			<th>delete</th>
+			</c:if>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${trainees}" var="book">
+			<tr>
+				<td>${trainee.trainee_id}</td>
+				<td>${trainee.trainee_name}</td>
+				<td>${trainee.branch}</td>
+				
+				<td>${book.percentage}</td>
+				<c:if test="${user.profile=='admin' ||user.profile=='mgr' }">
+				<td><a href="TraineeController.do?action=updateBook&id=<c:out value="${trainee.trainee_id}"/>">update</a></td>
+				</c:if>
+				<c:if test="${user.profile=='admin'}">
+				<td><a href="TraineeController.do?action=delBook&id=<c:out value="${trainee.trainee_id}"/>">delete</a></td>
+				</c:if>
+			
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
+<c:if test="${user.profile=='admin' ||user.profile=='mgr'  }">
+   <a href="BookController.do?action=addbook">add new book</a>
+</c:if>
+<br/><br/>
+<c:if test="${user.profile=='admin'}">
+	<a href="UserMgtController.do">register new user</a>
+</c:if>
+</body>
+</html>

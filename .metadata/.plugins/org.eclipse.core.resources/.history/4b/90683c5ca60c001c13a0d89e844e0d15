@@ -1,0 +1,23 @@
+package com.traineeMgt.controller;
+
+public class Trainee {
+	private int trainee_id;
+	private String trainee_name;
+	private String branch;
+	private double percentage;
+	public Trainee(int trainee_id, String trainee_name, String branch, double percentage) {
+	
+		this.trainee_id = trainee_id;
+		this.trainee_name = trainee_name;
+		this.branch = branch;
+		this.percentage = percentage;
+	}
+	public Trainee( String trainee_name, String branch, double percentage) {
+		
+	
+		this.trainee_name = trainee_name;
+		this.branch = branch;
+		this.percentage = percentage;
+	}
+
+}

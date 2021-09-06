@@ -1,0 +1,7 @@
+package com.traineeMgt.model.dao;
+
+public interface TraineeDao {
+	public List<Trainee> getAllTrainee();
+	public Trainee addTrainee(Trainee Trainee);
+	
+}

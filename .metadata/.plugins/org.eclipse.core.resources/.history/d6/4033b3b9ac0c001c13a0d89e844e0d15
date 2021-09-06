@@ -1,0 +1,5 @@
+package com.traineeMgt.model.service;
+
+public interface TraineeService {
+
+}

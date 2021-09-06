@@ -1,0 +1,15 @@
+public class TraineeDaoImp1 implements TraineeDao {
+
+	@Override
+	public List<Trainee> getAllTrainee() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Trainee addTrainee(Trainee Trainee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

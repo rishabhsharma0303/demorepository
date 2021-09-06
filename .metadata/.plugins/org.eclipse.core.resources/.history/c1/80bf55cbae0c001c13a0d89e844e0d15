@@ -1,0 +1,76 @@
+package com.traineeMgt.web.controller;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bookapp.model.dao.Book;
+import com.bookapp.model.service.BookService;
+import com.bookapp.model.service.BookServiceImpl;
+import com.traineeMgt.model.dao.Trainee;
+import com.traineeMgt.model.service.TraineeService;
+import com.traineeMgt.model.service.TraineeServiceImp1;
+
+@WebServlet("/TraineeController.do")
+public class TraineeController {
+
+	private static final long serialVersionUID = 1L;
+
+	private TraineeService traineeService = new TraineeServiceImp1();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
+		
+		if ("showall".equals(action)) {
+			List<Trainee> trainees = traineeService.getAllTrainee();
+			request.setAttribute("trainees", trainees);
+			RequestDispatcher rd = request.getRequestDispatcher("show.jsp");
+			rd.forward(request, response);
+		}
+		
+		else if("addTrainee".equals(action)) {
+			request.getRequestDispatcher("addTrainee.jsp").forward(request, response);
+		}
+		
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int trainee_id=Integer.parseInt(request.getParameter("trainee_id").trim());
+	
+		String trainee_name = request.getParameter("trainee_name");
+		String branch = request.getParameter("branch");
+		
+
+		String percentageStr = request.getParameter("percentage");
+
+	
+		
+
+		Double percentage=Double.parseDouble(percentageStr);
+		
+		Trainee trainee=new Trainee(trainee_name, branch, percentage);
+		
+		if(trainee_id==0) {
+			traineeService.addTrainee(trainee);
+		}
+//		else {
+//			traineeService.updateBook(id, price);
+//		}
+		
+		//PRG pattern
+		response.sendRedirect("TraineeController.do?action=showall");
+	}
+
+
+}

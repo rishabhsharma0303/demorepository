@@ -1,0 +1,51 @@
+package com.customer.webapp.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.util.*;
+
+/**
+ * Servlet implementation class CustomerController
+ */
+public class CustomerController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		try {
+		 Class.forName("com.mysql.jdbc.Driver");
+		 System.out.println("---------driver is loaded----------");
+		}catch(ClassNotFoundException ex) {
+			
+		}
+		try {
+			Connection  connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/yms21");
+		}
+//		name
+//		address
+//		mobile
+//		email
+		response.setContentType("text/html");
+		String name=request.getParameter("name");
+		String address=request.getParameter("address");
+		String mobile=request.getParameter("mobile");
+		String email=request.getParameter("email");
+		PrintWriter out=response.getWriter();
+		out.print("you are registered"+"<br/>");
+		out.print("name:"+name+"<br/>");
+		out.print("address:"+address+"<br/>");
+		out.print("mobile:"+mobile+"<br/>");
+		out.print("email:"+email+"<br/>");
+	
+	}
+
+}

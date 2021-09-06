@@ -1,0 +1,10 @@
+package com.traineeMgt.controller;
+
+import java.util.List;
+
+
+public interface TraineeDao {
+	public List<Trainee> getAllTrainee();
+	public Trainee addTrainee(Trainee Trainee);
+	
+}
